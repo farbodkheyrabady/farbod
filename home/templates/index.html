@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="main-banner header-text">
+      <div class="container-fluid">
+        <div class="owl-banner owl-carousel">
+          
+          
+          
+          
+          
+          
+        </div>
+      </div>
+    </div>
+    <!-- Banner Ends Here -->
+
+    
+
+
+    <section class="blog-posts">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="all-blog-posts">
+              <div class="row">
+                  {% for x in a %}
+                <div class="col-lg-12">
+                  <div class="blog-post">
+                    <div class="blog-thumb">
+                      <img src="{{ x.image.url }}" alt="">
+                    </div>
+                    <div class="down-content">
+                      <span>{{ x.cate.first }}</span>
+                      <a href="{% url "blog_det" x.id %}"><h4>{{ x.title }}</h4></a>
+                      <ul class="post-info">
+                        <li><a href="#">{{ x.autor }}</a></li>
+                        <li><a href="#">{{ x.create }}</a></li>
+
+                      </ul>
+                      <p>{{ x.desc }}</p>
+                      <div class="post-options">
+                        <div class="row">
+                          <div class="col-6">
+
+                          </div>
+                          <div class="col-6">
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {% endfor %}
+                <div class="col-lg-12">
+                  <div class="main-button">
+                    <a href="{% url "blog_list" %}">همه پست ها</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            {% include "includes/sidebar.html" %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% endblock %}
